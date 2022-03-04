@@ -223,14 +223,17 @@ export default defineComponent({
     };
 
     const onFieldBlur = () => {
-      validateRules({ triggerName: 'blur' });
+      validateRules({ triggerName: 'blur', validateMessages: formContext.validateMessages.value });
     };
     const onFieldChange = () => {
       if (validateDisabled.value) {
         validateDisabled.value = false;
         return;
       }
-      validateRules({ triggerName: 'change' });
+      validateRules({
+        triggerName: 'change',
+        validateMessages: formContext.validateMessages.value,
+      });
     };
     const clearValidate = () => {
       validateState.value = '';
